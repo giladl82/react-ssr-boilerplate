@@ -1,5 +1,12 @@
 .main__header {
   color: blue; }
+
+.main__header__navbar {
+  display: flex;
+  align-content: space-between; }
+  .main__header__navbar li {
+    list-style-type: none;
+    margin: 5px 15px; }
 .main__footer {
   position: fixed;
   bottom: 5px;

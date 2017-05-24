@@ -21,3 +21,4 @@ Both config files extend the base confing.
     -  server side rendering
 -  add localization
      -  server side rendering
+- add PropTypes

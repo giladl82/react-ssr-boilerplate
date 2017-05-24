@@ -15,7 +15,7 @@ class MasterPage extends Component {
     return (<div className='main__container'>
       <Header />
       <Switch>
-        <Route path='/' component={HomePage} />
+        <Route exact path='/' component={HomePage} />
         <Route path='/subpage' component={SubPage} />
         <Route path='/subpage2' component={SubPage2} />
       </Switch>

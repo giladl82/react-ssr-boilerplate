@@ -17,7 +17,7 @@ app.set('view engine', 'ejs')
 app.engine('.ejs', ejsExpress)
 app.set('views', path.join(__dirname, '../public'))
 
-app.get('/', (req, res) => {
+app.get('/**', (req, res) => {
   const context = {}
   const appBody = ReactDOMServer.renderToString(
     <StaticRouter
