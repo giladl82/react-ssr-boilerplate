@@ -1,7 +1,7 @@
 import React from 'react'
-require('./style.scss')
-
 import Navbar from './navbar'
+
+require('./style.scss')
 
 const Header = (props) => {
   return (

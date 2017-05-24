@@ -1,12 +1,11 @@
-import React, {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Switch, Route } from 'react-router-dom'
 
 import Header from '../Header'
 import Footer from '../Footer'
 import HomePage from '../HomePage'
 import SubPage from '../SubPage'
 import SubPage2 from '../SubPage2'
-
 
 require('./style.scss')
 
