@@ -1,0 +1,24 @@
+.main__header {
+  color: blue; }
+.main__footer {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  width: calc(100vw - 10px);
+  background-color: #fff;
+  color: green; }
+.homepage__container {
+  color: #000; }
+.subpage1__container {
+  color: #444; }
+.subpage2__container {
+  color: #999; }
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.main__container {
+  border: double 8px #000; }
+
+/*# sourceMappingURL=bundle.map.js*/

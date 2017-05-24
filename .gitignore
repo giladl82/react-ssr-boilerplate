@@ -1,0 +1,6 @@
+node_modules/
+dest/
+*bundle.js
+*bundle*
+*npm-debug.log
+.DS_Store
