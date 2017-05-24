@@ -14,7 +14,7 @@ Both config files extend the base confing.
  - react-router-v4 - for routing
  - redux - for state managment
  - redux-thunk - for async data fetcing
- - react-int* - localization
+ - react-intl - localization
 
 # TODO:
  -  add redux to each page
