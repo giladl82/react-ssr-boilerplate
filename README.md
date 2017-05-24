@@ -17,10 +17,6 @@ Both config files extend the base confing.
  - react-int* - localization
 
 # TODO:
- -  create some simple components
-    -  server side rendering
- -  add routing
-    - server side rendering
  -  add redux to each page
     -  server side rendering
 -  add localization
