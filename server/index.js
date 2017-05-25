@@ -43,18 +43,46 @@ const _getPageContent = (pageName) => {
   })
 }
 
+const _getI18N = (locale) => {
+  switch (locale.toLowerCase()) {
+    case 'he':
+      return {
+        'header.homepage': 'עמוד הבית',
+        'header.subpage': 'עמוד משנה',
+        'header.subpage2': 'עמוד משנה 2',
+        'login.username': 'שם משתמש',
+        'login.password': 'סיסמא'
+      }
+    default:
+      return {
+        'header.homepage': 'Home Page',
+        'header.subpage': 'First Subpage',
+        'header.subpage2': 'Second Subpage',
+        'login.username': 'User name',
+        'login.password': 'Password'
+      }
+  }
+}
+
 app.get('/api/getPageContent/:pageName', (req, res) => {
   const { pageName } = req.params
   _getPageContent(pageName).then((response) => res.send(response))
 })
 
+app.get('/api/i18n/:locale', (req, res) => {
+  const { locale } = req.locale
+  _getI18N(locale).then((response) => res.send(response))
+})
+
 app.get('/**', (req, res) => {
-  _getPageContent('homepage').then(content => {
+  const pageName = req.originalUrl.substring(1) || 'homepage'
+
+  _getPageContent(pageName).then(content => {
     const context = {}
     const preloadedState = {
       app: {
         pages: {
-          'homepage': content.toString()
+          [pageName]: content.toString()
         }
       }
     }

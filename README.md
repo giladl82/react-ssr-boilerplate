@@ -17,8 +17,8 @@ Both config files extend the base confing.
  - react-intl - localization
 
 # TODO:
- -  add redux to each page
-    -  server side rendering
--  add localization
-     -  server side rendering
-- add PropTypes
+-  Async routing
+-  Routing transition
+-  Modal route
+-  Add localization
+     -  server side Rendering

@@ -6,7 +6,7 @@ require('./style.scss')
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  homePage: PropTypes.string.isRequired
+  homePage: PropTypes.string
 }
 
 class HomePage extends Component {
@@ -25,6 +25,7 @@ class HomePage extends Component {
 HomePage.propTypes = propTypes
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     homePage: state.app.pages.homepage
   }
