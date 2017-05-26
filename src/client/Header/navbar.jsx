@@ -15,7 +15,9 @@ const HeaderNav = (props) => {
     { to: { pathname: '/' }, label: 'Home', classes: [] },
     { to: { pathname: '/subpage' }, label: 'Sub1', classes: [] },
     { to: { pathname: '/subpage2' }, label: 'Sub2', classes: [] },
-    { to: { pathname: '/popup', state: { modal: true } }, label: 'popup', classes: [] }
+    { to: { pathname: '/popup', state: { modal: true } }, label: 'popup', classes: [] },
+    { to: { pathname: '/protected' }, label: 'Protected - NO', classes: [] },
+    { to: { pathname: '/protected/true' }, label: 'Protected - YES', classes: [] }
   ]
 
   return (
