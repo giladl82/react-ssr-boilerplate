@@ -14,7 +14,7 @@ const ExtractTextPluginConfig = new ExtractTextPlugin({
 })
 
 const CleanWebpackPlubinConfig = new CleanWebpackPlubin([
-  path.join(__dirname, `build/server`)
+  path.join(__dirname, `../build/server`)
 ])
 
 // inject source map support on top of the build file
@@ -26,22 +26,22 @@ const BannerPluginConfig = new webpack.BannerPlugin({
 
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
-function getExternals() {
-  var externals = {};
+function getExternals () {
+  var externals = {}
 
   fs.readdirSync(path.resolve(__dirname, 'node_modules'))
     .filter(function (module) {
-      return ['.bin'].indexOf(module) === -1;
+      return [ '.bin' ].indexOf(module) === -1
     })
     .forEach(function (module) {
-      externals[module] = 'commonjs ' + module;
-    });
+      externals[ module ] = 'commonjs ' + module
+    })
 
-  return externals;
+  return externals
 }
 
 var config = merge.smart(baseConfig, {
-  entry: path.resolve(__dirname, 'server/index.js'),
+  entry: path.resolve(__dirname, 'src/server/index.js'),
 
   externals: getExternals(),
 
@@ -60,6 +60,6 @@ var config = merge.smart(baseConfig, {
   plugins: [
     CleanWebpackPlubinConfig, BannerPluginConfig, ExtractTextPluginConfig
   ]
-});
+})
 
 module.exports = config
