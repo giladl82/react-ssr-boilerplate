@@ -9,7 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // extracting comon modules to vendor
 const CommonsChunkPluginConfig = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor',
-  filename: '/[name]/bundle.[hash].js'
+  filename: '[name]/bundle.[hash].js'
 })
 
 // clean destination folder
@@ -28,7 +28,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 // extarct css to html
 const ExtractTextPluginConfig = new ExtractTextPlugin({
-  filename: '/[name]/styles.css',
+  filename: '[name]/styles.css',
   allChunks: true
 })
 
@@ -62,13 +62,15 @@ const config = merge.smart(baseConfig, {
     fs: 'empty'
   },
 
+
   output: {
     path: path.join(__dirname, `build`, 'public'),
+    publicPath: '/',
     filename: '[name]/bundle.js',
     sourceMapFilename: '[name]/bundle.map.js'
   },
 
-  plugins: [CleanWebpackPlubinConfig, CommonsChunkPluginConfig, HtmlWebpackPluginConfig, ExtractTextPluginConfig]
+  plugins: [ CleanWebpackPlubinConfig, CommonsChunkPluginConfig, HtmlWebpackPluginConfig, ExtractTextPluginConfig ]
 })
 
 module.exports = config
