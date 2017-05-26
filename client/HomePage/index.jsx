@@ -25,7 +25,6 @@ class HomePage extends Component {
 HomePage.propTypes = propTypes
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     homePage: state.app.pages.homepage
   }

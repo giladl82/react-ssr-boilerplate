@@ -27,7 +27,6 @@ class SubPage1 extends Component {
 SubPage1.propTypes = propTypes
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     subpage: state.app.pages.subpage
   }

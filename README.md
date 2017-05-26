@@ -13,7 +13,7 @@ Both config files extend the base confing.
  - react - for views
  - react-router-v4 - for routing
  - redux - for state managment
- - redux-thunk - for async data fetcing
+ - redux-thunk - for async data fetching
  - react-intl - localization
 
 # TODO:
