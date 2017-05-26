@@ -21,7 +21,6 @@ const defaultProps = {}
 class MasterPage extends Component {
   componentWillUpdate (nextProps) {
     const { location } = this.props
-    debugger
     // set previousLocation if props.location is not modal
     if (
       nextProps.history.action !== 'POP' &&
@@ -34,7 +33,7 @@ class MasterPage extends Component {
   render () {
     const { location } = this.props
     const isModal = !!(location.state && location.state.modal && this.previousLocation !== location)// not initial render
-    console.log(isModal)
+
     return (<div className='main__container'>
       <Header pathName={location.pathname} />
 

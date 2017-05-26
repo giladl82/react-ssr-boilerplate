@@ -25,7 +25,7 @@ const ModalPage = ({ match, history }) => {
       onRequestClose={closeModalHandler}
       contentLabel='Modal Page'
       className={'modalpage-base'}
-      overlayClassName={'.modalpage__overlay-base'}>
+      overlayClassName='modalpage__overlay-base'>
       <h2>Modal Page</h2>
     </Modal >
   )
