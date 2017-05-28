@@ -16,12 +16,39 @@
   width: calc(100vw - 10px);
   background-color: #fff;
   color: green; }
+.privatepage__container {
+  background-color: #000;
+  color: #ccc; }
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.main__container {
+  border: double 8px #000; }
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1; }
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in; }
+
+.ReactModal__Body--open {
+  overflow: hidden; }
 .homepage__container {
   color: #000; }
 .subpage1__container {
   color: #444; }
 .subpage2__container {
   color: #999; }
+.nomatch__container {
+  color: red;
+  text-align: center; }
+
+.nomatch__404 {
+  font-size: 1.1rem; }
 .nomatch__container {
   color: red;
   text-align: center; }
@@ -49,32 +76,5 @@
   right: 0;
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.75); }
-.privatepage__container {
-  background-color: #000;
-  color: #ccc; }
-.nomatch__container {
-  color: red;
-  text-align: center; }
-
-.nomatch__404 {
-  font-size: 1.1rem; }
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
-
-.main__container {
-  border: double 8px #000; }
-
-.fade-enter {
-  opacity: 0;
-  z-index: 1; }
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 250ms ease-in; }
-
-.ReactModal__Body--open {
-  overflow: hidden; }
 
 /*# sourceMappingURL=bundle.map.js*/

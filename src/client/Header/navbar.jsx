@@ -22,7 +22,7 @@ const HeaderNav = (props) => {
         {links.map((link) => {
           return (
             <li key={link.to.pathname}>
-              <NavLink exact className={classnames([ ...link.classes ])} activeClassName='is-active' to={{ ...link.to }}>{link.label}</NavLink>
+              <NavLink exact className={classnames([ ...link.classes ])} activeClassName='' to={{ ...link.to }}>{link.label}</NavLink>
             </li>
           )
         })}
