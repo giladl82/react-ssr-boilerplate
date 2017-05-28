@@ -1,16 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import classnames from 'classnames'
 
-const propTypes = {
-  pathName: PropTypes.string.isRequired
-}
+const propTypes = {}
 
 const defaultProps = {}
 
 const HeaderNav = (props) => {
-  const { pathName } = props
   const links = [
     { to: { pathname: '/' }, label: 'Home', classes: [] },
     { to: { pathname: '/subpage' }, label: 'Sub1', classes: [] },
@@ -26,7 +22,7 @@ const HeaderNav = (props) => {
         {links.map((link) => {
           return (
             <li key={link.to.pathname}>
-              <Link className={classnames([ ...link.classes ], { 'is-active': link.to === pathName })} to={{ ...link.to }}>{link.label}</Link>
+              <NavLink exact className={classnames([ ...link.classes ])} activeClassName='is-active' to={{ ...link.to }}>{link.label}</NavLink>
             </li>
           )
         })}
