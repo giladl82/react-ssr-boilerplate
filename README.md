@@ -46,7 +46,16 @@ yarn add
 	* build:all - Runs build:client + build:server
 	* start:all - Runs build:client + build:server + start
 
+** If you do not have nodemon instlled, then run
+```
+npm install -g nodemon
+```
+or
+```
+yarn global add nodemon
+```
 
+** You can not run the start command, without building the project first
 
 ### Nice to have
 
