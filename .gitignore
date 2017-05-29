@@ -1,9 +1,12 @@
 node_modules/
+
 build/
 build/public/
 build/**/
+build/public/index.ejs
+
 *bundle.js
 *bundle*
 *npm-debug.log
+
 .DS_Store
-build/public/index.ejs
