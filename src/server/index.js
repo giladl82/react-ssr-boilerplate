@@ -7,6 +7,7 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
+// import { IntlProvider } from 'react-intl'
 import MasterPage from '../client/MasterPage'
 
 import configureStore from '../client/store'
@@ -44,24 +45,30 @@ const _getPageContent = (pageName) => {
 }
 
 const _getI18N = (locale) => {
-  switch (locale.toLowerCase()) {
-    case 'he':
-      return {
-        'header.homepage': 'עמוד הבית',
-        'header.subpage': 'עמוד משנה',
-        'header.subpage2': 'עמוד משנה 2',
-        'login.username': 'שם משתמש',
-        'login.password': 'סיסמא'
-      }
-    default:
-      return {
-        'header.homepage': 'Home Page',
-        'header.subpage': 'First Subpage',
-        'header.subpage2': 'Second Subpage',
-        'login.username': 'User name',
-        'login.password': 'Password'
-      }
-  }
+  return new Promise((resolve, reject) => {
+    switch (locale.toLowerCase()) {
+      case 'he':
+        resolve({
+          'header.homepage': 'עמוד הבית',
+          'header.subpage': 'עמוד משנה',
+          'header.subpage2': 'עמוד משנה 2',
+          'header.popup': 'חלון מודאלי',
+          'header.privateNo': 'עמוד מוגן - חסון',
+          'header.privateYes': 'עמוד מוגן - מאושר'
+        })
+        break
+      default:
+        resolve({
+          'header.homepage': 'Home Page',
+          'header.subpage': 'Subpage 1',
+          'header.subpage2': 'Subpage 2',
+          'header.popup': 'Modal popup',
+          'header.privateNo': 'Protected - No access',
+          'header.privateYes': 'Protected - with access'
+        })
+        break
+    }
+  })
 }
 
 app.get('/api/getPageContent/:pageName', (req, res) => {
@@ -77,32 +84,32 @@ app.get('/api/i18n/:locale', (req, res) => {
 app.get('/**', (req, res) => {
   const pageName = req.originalUrl.substring(1) || 'homepage'
 
-  _getPageContent(pageName).then(content => {
-    const context = {}
-    const preloadedState = {
-      app: {
-        pages: {
-          [pageName]: content.toString()
-        }
-      }
-    }
+  const preloadedState = { app: { pages: {}, locale: 'en', messages: {} } }
 
-    const store = configureStore(preloadedState)
+  _getI18N(preloadedState.app.locale).then(messages => {
+    preloadedState.app.messages = messages
+    return _getPageContent(pageName)
+  })
+    .then(content => {
+      const context = {}
 
-    const appBody = ReactDOMServer.renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.url} context={context}>
-          <MasterPage />
-        </StaticRouter>
-      </Provider>
-    )
+      preloadedState.app.pages[ pageName ] = content.toString()
 
-    const preloadedStateScript = ` <script>
+      const store = configureStore(preloadedState)
+
+      const appBody = ReactDOMServer.renderToString(
+        <Provider store={store}>
+          <StaticRouter location={req.url} context={context}>
+            <MasterPage />
+          </StaticRouter>
+        </Provider>
+      )
+
+      const preloadedStateScript = ` <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
         </script>`
-
-    res.render('index.ejs', { appBody, preloadedStateScript })
-  })
+      res.render('index.ejs', { appBody, preloadedStateScript })
+    })
 })
 
 app.listen(8000, () => {

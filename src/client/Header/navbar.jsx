@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 
 const propTypes = {}
@@ -8,12 +9,12 @@ const defaultProps = {}
 
 const HeaderNav = (props) => {
   const links = [
-    { to: { pathname: '/' }, label: 'Home', classes: [] },
-    { to: { pathname: '/subpage' }, label: 'Sub1', classes: [] },
-    { to: { pathname: '/subpage2' }, label: 'Sub2', classes: [] },
-    { to: { pathname: '/popup', state: { modal: true } }, label: 'popup', classes: [] },
-    { to: { pathname: '/protected' }, label: 'Protected - NO', classes: [] },
-    { to: { pathname: '/protected/true' }, label: 'Protected - YES', classes: [] }
+    { to: { pathname: '/' }, label: 'header.homepage', classes: [] },
+    { to: { pathname: '/subpage' }, label: 'header.subpage', classes: [] },
+    { to: { pathname: '/subpage2' }, label: 'header.subpage2', classes: [] },
+    { to: { pathname: '/popup', state: { modal: true } }, label: 'header.popup', classes: [] },
+    { to: { pathname: '/protected' }, label: 'header.privateNo', classes: [] },
+    { to: { pathname: '/protected/true' }, label: 'header.privateYes', classes: [] }
   ]
 
   return (
@@ -22,7 +23,9 @@ const HeaderNav = (props) => {
         {links.map((link) => {
           return (
             <li key={link.to.pathname}>
-              <NavLink exact className={classnames([ ...link.classes ])} activeClassName='' to={{ ...link.to }}>{link.label}</NavLink>
+              <NavLink exact className={classnames([ ...link.classes ])} activeClassName='' to={{ ...link.to }}>
+                <FormattedMessage id={link.label} />
+              </NavLink>
             </li>
           )
         })}

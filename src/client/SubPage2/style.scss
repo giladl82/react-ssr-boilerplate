@@ -1,3 +1,31 @@
 .subpage2__container {
   color: #999;
 }
+
+.sample__form__instructions {
+  margin: 15px auto;
+  border: solid 2px #00a;
+  width: 50%;
+  
+  li {
+    margin: 5px;
+  }
+}
+
+.sample__form{
+  margin: 20px;
+}
+
+ .sample__form__label {
+  display: inline-block;
+  width: 80px;
+  margin: 12px 0;
+}
+
+.sample__form__error {
+  color: red;
+}
+
+.sample__form__wraning {
+  color: orange;
+}

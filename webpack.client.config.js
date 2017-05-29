@@ -45,6 +45,7 @@ const vendorModules = [
   'react-redux',
   'react-router-dom',
   'redux',
+  'redux-form',
   'redux-thunk'
 ]
 
