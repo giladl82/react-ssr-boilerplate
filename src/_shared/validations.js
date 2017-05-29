@@ -6,7 +6,7 @@ export const email = value => (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4
   ? 'Invalid email address' : undefined)
 
 export const passwordStrengh = value => {
-  return ((value && /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(value))
+  return ((value && /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/.test(value))
     ? undefined : 'Password is weak')
 }
 
