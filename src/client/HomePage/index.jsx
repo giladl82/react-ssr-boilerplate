@@ -1,17 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getPageContentAsync } from '../_shared/app-shared-action-creators'
 require('./style.scss')
 
 const propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  getPageContentAsync: PropTypes.func.isRequired,
   homePage: PropTypes.string
 }
 
 class HomePage extends Component {
   componentDidMount () {
-    this.props.dispatch(getPageContentAsync('homepage'))
+    if (this.props.homePage) return
+    this.props.getPageContentAsync('homepage')
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    debugger
+    return true
   }
 
   render () {
@@ -24,10 +31,16 @@ class HomePage extends Component {
 
 HomePage.propTypes = propTypes
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    getPageContentAsync
+  }, dispatch)
+)
+
+const mapStateToProps = (state, ownProps) => {
   return {
     homePage: state.app.pages.homepage
   }
 }
 
-export default connect(mapStateToProps)(HomePage)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

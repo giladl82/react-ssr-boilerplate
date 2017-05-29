@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { getPageContentAsync } from '../_shared/app-shared-action-creators'
@@ -7,13 +8,15 @@ import { getPageContentAsync } from '../_shared/app-shared-action-creators'
 require('./style.scss')
 
 const propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  getPageContentAsync: PropTypes.func.isRequired,
   subpage: PropTypes.string
 }
 
 class SubPage1 extends Component {
   componentDidMount () {
-    this.props.dispatch(getPageContentAsync('subpage'))
+    if (this.props.subpage) return
+
+    this.props.getPageContentAsync('subpage')
   }
 
   render () {
@@ -22,10 +25,12 @@ class SubPage1 extends Component {
         <h2>Sub Page Number 1</h2>
         <ReactCSSTransitionGroup
           component='div'
+          transitionAppear
+          transitionAppearTimeout={5000}
           transitionName='example'
-          transitionEnterTimeout={1500}
-          transitionLeaveTimeout={1500}>
-          {this.props.subpage ? (<p>{this.props.subpage}</p>) : null}
+          transitionEnter={false}
+          transitionLeave={false}>
+          <p key='1'>{this.props.subpage}</p>
         </ReactCSSTransitionGroup>
       </div >)
   }
@@ -33,10 +38,16 @@ class SubPage1 extends Component {
 
 SubPage1.propTypes = propTypes
 
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    getPageContentAsync
+  }, dispatch)
+)
+
 const mapStateToProps = (state) => {
   return {
     subpage: state.app.pages.subpage
   }
 }
 
-export default connect(mapStateToProps)(SubPage1)
+export default connect(mapStateToProps, mapDispatchToProps)(SubPage1)

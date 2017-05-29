@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getPageContentAsync } from '../_shared/app-shared-action-creators'
 
@@ -8,7 +9,7 @@ import SampleForm from './sample-form'
 require('./style.scss')
 
 const propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  getPageContentAsync: PropTypes.func.isRequired,
   subpage2: PropTypes.string
 }
 
@@ -26,7 +27,9 @@ class SubPage2 extends Component {
   }
 
   componentDidMount () {
-    this.props.dispatch(getPageContentAsync('subpage2'))
+    if (this.props.subpage2) return
+
+    this.props.getPageContentAsync('subpage2')
   }
 
   render () {
@@ -43,10 +46,16 @@ SubPage2.propTypes = propTypes
 
 SubPage2.defaultProps = defaultProps
 
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    getPageContentAsync
+  }, dispatch)
+)
+
 const mapStateToProps = (state) => {
   return {
     subpage2: state.app.pages.subpage2
   }
 }
 
-export default connect(mapStateToProps)(SubPage2)
+export default connect(mapStateToProps, mapDispatchToProps)(SubPage2)
