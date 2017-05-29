@@ -35,8 +35,7 @@ class MasterPage extends Component {
   render () {
     const { location, app } = this.props
 
-    const isModal = !!(location.state && location.state.modal && this.previousLocation !== location)// not initial render
-    console.log(this.props)
+    const isModal = !!(location.state && location.state.modal && this.previousLocation !== location)// not initial render    
 
     return (
       <IntlProvider locale={app.locale} messages={app.messages}>

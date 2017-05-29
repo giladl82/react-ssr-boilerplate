@@ -11,7 +11,7 @@ const getPageContent = (pageName, content) => {
 
 export function getPageContentAsync (pageName) {
   return (dispatch, getSate) => {
-    axios.get(`/api/getPageContent/${pageName}`).then((response) => {
+    axios.get(`/api/page-content/${pageName}`).then((response) => {
       dispatch(getPageContent(pageName, response.data))
     })
   }

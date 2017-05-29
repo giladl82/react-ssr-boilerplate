@@ -23,8 +23,8 @@ class SubPage1 extends Component {
         <ReactCSSTransitionGroup
           component='div'
           transitionName='example'
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
+          transitionEnterTimeout={1500}
+          transitionLeaveTimeout={1500}>
           {this.props.subpage ? (<p>{this.props.subpage}</p>) : null}
         </ReactCSSTransitionGroup>
       </div >)
