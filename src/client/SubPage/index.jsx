@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { getPageContentAsync } from '../_shared/app-shared-action-creators'
 
 require('./style.scss')
@@ -19,8 +20,14 @@ class SubPage1 extends Component {
     return (
       <div className='subpage1__container'>
         <h2>Sub Page Number 1</h2>
-        <p>{this.props.subpage}</p>
-      </div>)
+        <ReactCSSTransitionGroup
+          component='div'
+          transitionName='example'
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {this.props.subpage ? (<p>{this.props.subpage}</p>) : null}
+        </ReactCSSTransitionGroup>
+      </div >)
   }
 }
 

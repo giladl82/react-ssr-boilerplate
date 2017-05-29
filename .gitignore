@@ -6,3 +6,4 @@ build/**/
 *bundle*
 *npm-debug.log
 .DS_Store
+build/public/index.ejs
