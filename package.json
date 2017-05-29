@@ -11,7 +11,7 @@
     "start:all": "concurrently \"npm run build:client\" \"npm run build:server\" \"npm start\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Gilad Lev-Ari (giladl82@gmail.com)",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.24.1",
